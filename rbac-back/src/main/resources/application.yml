@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    #type: org.springframework.jdbc.datasource.DriverManagerDataSource # spring自带的数据源
+    url: jdbc:mysql://127.0.0.1:3306/rbac_ssm?serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      max-active: 10
+      min-idle: 2
+      validation-query: select 'x'
+      stat-view-servlet:
+        login-username: admin
+        enabled: true  #启用监控页
+        login-password: admin
+        allow:
+        deny:
+        url-pattern: /druid/*
+
+# mybatis 配置
+mybatis:
+  mapper-locations: classpath:/mappers/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+pagehelper:
+  helper-dialect: mysql
